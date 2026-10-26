@@ -73,3 +73,15 @@ O harness Hermes injeta o AGENTS.md no system prompt, mas não força o modelo a
 **Regra de ouro:** NUNCA aplicar correção sem aprovação explícita. O fluxo é: propor -> mostrar diff -> validar (build/test/deny/audit) -> pedir aprovação -> só então commitar.
 
 **Guardrails:** nunca alterar testes para fazer passar; nunca usar --force; documentar exceção no deny.toml se não houver correção disponível.
+
+### Skill: rust-fuzz
+
+**Use quando** o estudante pedir para fazer fuzzing de código Rust.
+
+**Regra de ouro:** nunca rodar no diretório principal; usar CARGO_TARGET_DIR=/tmp; limitar tempo.
+
+### Skill: rust-mutants
+
+**Use quando** o estudante pedir para avaliar a qualidade dos testes.
+
+**Regra de ouro:** limitar escopo com --file; avisar que demora; nunca commitar mutants.out/.

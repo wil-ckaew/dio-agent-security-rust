@@ -9,3 +9,9 @@ usuarios.db
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Fuzzing (artefatos grandes, não commitar)
+fuzz/target/
+fuzz/corpus/
+fuzz/artifacts/
+mutants.out/
