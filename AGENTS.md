@@ -41,3 +41,19 @@ Detalhes em skills/security-testing/SKILL.md.
 ## Limitação conhecida
 
 O harness Hermes injeta o AGENTS.md no system prompt, mas não força o modelo a abrir o SKILL.md. O formato fixo literal é usado quando invocado explicitamente; o conteúdo (SQLi, MITRE, correção) está correto em todos os casos.
+
+### Skill: rust-dependency-audit
+
+**Use quando** o estudante pedir para verificar vulnerabilidades em dependências Rust (crates).
+
+**Regra de ouro:** primeira resposta só com perguntas de contexto.
+
+**Roteiro:** rodar `cargo audit`, formatar no formato fixo, sugerir `cargo update` ou documentar exceção.
+
+### Skill: rust-code-scan
+
+**Use quando** o estudante pedir para procurar padrões inseguros no código-fonte Rust.
+
+**Regra de ouro:** primeira resposta só com perguntas de contexto.
+
+**Roteiro:** rodar `semgrep --config=p/rust src/`, filtrar Rust, formatar no formato fixo, validar falsos positivos lendo o código.
