@@ -53,3 +53,7 @@ O harness Hermes não força o modelo a abrir o SKILL.md; o formato fixo literal
 ## Licença
 
 MIT.
+
+## Versão em Python
+
+Este projeto tem uma versão em Python: [dio-agent-security](https://github.com/wil-ckaew/dio-agent-security).
