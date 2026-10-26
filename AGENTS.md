@@ -57,3 +57,11 @@ O harness Hermes injeta o AGENTS.md no system prompt, mas não força o modelo a
 **Regra de ouro:** primeira resposta só com perguntas de contexto.
 
 **Roteiro:** rodar `semgrep --config=p/rust src/`, filtrar Rust, formatar no formato fixo, validar falsos positivos lendo o código.
+
+### Skill: rust-policy-check
+
+**Use quando** o estudante pedir para verificar políticas de dependência Rust (vulnerabilidades, licenças, crates proibidas, fontes).
+
+**Regra de ouro:** primeira resposta só com perguntas de contexto.
+
+**Roteiro:** rodar `cargo deny check`, interpretar por categoria (advisories, licenses, bans, sources), formatar vulnerabilidades no formato fixo, sugerir correções ou ajustes no `deny.toml`.

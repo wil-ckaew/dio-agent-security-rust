@@ -1,0 +1,59 @@
+# deny.toml — Política de dependências do dio-agent-security-rust
+
+[advisories]
+# Vulnerabilidades conhecidas: negar (falha o build). O padrão do cargo-deny 0.20 já é deny.
+# Crates não mantidos: falha apenas se forem dependências diretas do workspace
+unmaintained = "workspace"
+# APIs unsound: falha apenas se forem dependências diretas do workspace
+unsound = "workspace"
+# Versões yanked: avisar (não falha)
+yanked = "warn"
+
+# Banco de dados de advisories
+db-urls = ["https://github.com/rustsec/advisory-db"]
+
+# Exceções documentadas (adicione aqui se precisar ignorar algo)
+ignore = []
+
+[licenses]
+# Licenças permitidas no projeto
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Unicode-3.0",
+    "Zlib",
+    "Unicode-DFS-2016",
+]
+
+# Confiança mínima para detecção de licença
+confidence-threshold = 0.8
+
+# Crates sem licença: negar (o padrão do cargo-deny 0.20 já é deny)
+# A listagem allow já restringe: todo o resto é negado por padrão.
+
+[bans]
+# Múltiplas versões da mesma crate: avisar
+multiple-versions = "warn"
+
+# Crates proibidas (exemplo: openssl, prefira rustls)
+# deny = [
+#     { name = "openssl", reason = "Use rustls ou native-tls" },
+# ]
+
+# Versões específicas a ignorar na detecção de duplicatas
+skip = []
+
+# Árvores inteiras a ignorar
+skip-tree = []
+
+[sources]
+# Fontes desconhecidas: negar
+unknown-registry = "deny"
+unknown-git = "deny"
+
+# Fontes permitidas
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []
