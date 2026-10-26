@@ -1,16 +1,12 @@
-use rusqlite::{Connection, Result};
+use rusqlite::{params, Connection, Result};
 
 fn fazer_login(usuario: &str, senha: &str) -> Result<String> {
     let conexao = Connection::open("usuarios.db")?;
 
-    // VULNERÁVEL: concatena entrada do usuário na string SQL
-    let query = format!(
-        "SELECT * FROM usuarios WHERE username = '{}' AND password = '{}'",
-        usuario, senha
-    );
-
-    let mut stmt = conexao.prepare(&query)?;
-    let resultado = stmt.query_row([], |_row| Ok(())).is_ok();
+    // CORRIGIDO: query parametrizada com ?1, ?2 e bind de parâmetros
+    let query = "SELECT * FROM usuarios WHERE username = ?1 AND password = ?2";
+    let mut stmt = conexao.prepare(query)?;
+    let resultado = stmt.query_row(params![usuario, senha], |_row| Ok(())).is_ok();
 
     if resultado {
         Ok("Acesso Permitido".to_string())
