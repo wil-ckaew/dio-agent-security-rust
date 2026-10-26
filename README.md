@@ -97,3 +97,15 @@ O mutation testing mede se os testes detectam falhas. Para rodar:
 **Resultado inicial:** 2 mutantes MISSED (sem testes unitários). Após adicionar testes, os mutantes devem ser CAUGHT.
 
 **Guardrail:** limitar escopo com `--file`; nunca commitar `mutants.out/`.
+
+### Refatoração para testes robustos
+
+O `fazer_login` agora recebe `&Connection` como parâmetro (injeção de dependência):
+
+    pub fn fazer_login(conexao: &Connection, usuario: &str, senha: &str) -> Result<String>
+
+Isso permite que os testes usem `Connection::open_in_memory()`, sem depender do `usuarios.db` real. Resultado:
+
+- `cargo test`: 3 testes passam (login correto, login incorreto, SQL Injection).
+- `cargo mutants --file src/lib.rs`: 2 caught (os testes detectam mutações).
+- CI (GitHub Actions): `build-and-test` passa sem dependência externa.
