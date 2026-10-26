@@ -16,3 +16,5 @@ fuzz/corpus/
 fuzz/artifacts/
 mutants.out/
 mutants.out.old/
+target/nextest/
+target/llvm-cov/

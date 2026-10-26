@@ -85,3 +85,19 @@ O harness Hermes injeta o AGENTS.md no system prompt, mas não força o modelo a
 **Use quando** o estudante pedir para avaliar a qualidade dos testes.
 
 **Regra de ouro:** limitar escopo com --file; avisar que demora; nunca commitar mutants.out/.
+
+### Skill: rust-nextest
+
+**Use quando** o estudante pedir para rodar testes de forma mais rápida.
+
+**Regra de ouro:** primeira resposta só com perguntas de contexto.
+
+**Roteiro:** rodar cargo nextest run, interpretar PASS/FAIL, formatar falhas no formato fixo.
+
+### Skill: rust-coverage
+
+**Use quando** o estudante pedir para medir a cobertura de testes.
+
+**Regra de ouro:** primeira resposta só com perguntas de contexto.
+
+**Roteiro:** rodar cargo llvm-cov --text, gerar HTML, sugerir testes para linhas não cobertas.
