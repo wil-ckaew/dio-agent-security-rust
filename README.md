@@ -77,3 +77,23 @@ O harness Hermes não força o modelo a abrir o `SKILL.md`; o formato fixo liter
 ## Licença
 
 MIT.
+
+## Testes avançados
+
+### Fuzzing (cargo-fuzz)
+
+O fuzzing encontra crashes com entrada aleatória. Para rodar:
+
+    CARGO_TARGET_DIR=/tmp/fuzz-target cargo +nightly fuzz run fuzz_target_1 -- -max_total_time=60
+
+**Guardrail:** nunca rodar no diretório principal (gera dezenas de GB em `fuzz/target/`).
+
+### Mutation testing (cargo-mutants)
+
+O mutation testing mede se os testes detectam falhas. Para rodar:
+
+    cargo mutants --file src/lib.rs --timeout 60
+
+**Resultado inicial:** 2 mutantes MISSED (sem testes unitários). Após adicionar testes, os mutantes devem ser CAUGHT.
+
+**Guardrail:** limitar escopo com `--file`; nunca commitar `mutants.out/`.
