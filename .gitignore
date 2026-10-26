@@ -1,0 +1,11 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# Banco de teste (contém senhas em texto puro)
+*.db
+usuarios.db
+
+# Sistema
+.DS_Store
+Thumbs.db
