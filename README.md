@@ -57,3 +57,23 @@ MIT.
 ## Versão em Python
 
 Este projeto tem uma versão em Python: [dio-agent-security](https://github.com/wil-ckaew/dio-agent-security).
+
+## Prints da análise conduzida pelo Hermes (Rust)
+
+### 1. Análise do `vulneravel.rs`
+
+O agente identifica SQL Injection no `format!`, cita T1190 do MITRE ATT&CK, avalia impacto, probabilidade e severidade, e recomenda a correção com `?1`, `?2` e `params![]`.
+
+![Análise do vulneravel.rs](prints/print-rust-1-analise.png)
+
+### 2. Confirmação da mitigação no `corrigido.rs`
+
+O agente confirma que o SQL Injection foi mitigado no `corrigido.rs`, no formato fixo.
+
+![Confirmação da mitigação](prints/print-rust-2-mitigacao.png)
+
+### 3. Resultado do `cargo run`
+
+Evidência de que o binário vulnerável permite o bypass e o corrigido bloqueia.
+
+![Resultado do cargo run](prints/print-rust-3-cargo-run.png)
