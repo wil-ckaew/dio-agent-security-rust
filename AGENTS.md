@@ -65,3 +65,11 @@ O harness Hermes injeta o AGENTS.md no system prompt, mas não força o modelo a
 **Regra de ouro:** primeira resposta só com perguntas de contexto.
 
 **Roteiro:** rodar `cargo deny check`, interpretar por categoria (advisories, licenses, bans, sources), formatar vulnerabilidades no formato fixo, sugerir correções ou ajustes no `deny.toml`.
+
+### Skill: rust-autofix
+
+**Use quando** o estudante pedir para corrigir uma vulnerabilidade já identificada.
+
+**Regra de ouro:** NUNCA aplicar correção sem aprovação explícita. O fluxo é: propor -> mostrar diff -> validar (build/test/deny/audit) -> pedir aprovação -> só então commitar.
+
+**Guardrails:** nunca alterar testes para fazer passar; nunca usar --force; documentar exceção no deny.toml se não houver correção disponível.
